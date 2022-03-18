@@ -80,7 +80,8 @@ from django.utils.translation import gettext_lazy as _
 # If True, the django-modeltranslation will be added to the
 # INSTALLED_APPS setting.
 USE_MODELTRANSLATION = False
-
+# MODELTRANSLATION_DEFAULT_LANGUAGE = 'zh-hans'
+# MODELTRANSLATION_LANGUAGES = ('zh-hans', 'en')
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -88,7 +89,7 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1","www.roobooto.com"]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -107,12 +108,16 @@ USE_TZ = True
 LANGUAGE_CODE = "en"
 
 # Supported languages
-LANGUAGES = (("en", _("English")),)
+LANGUAGES = (
+        ("en", _("English")),
+        ("ja", _("Japanese")),
+        ('zh-hans', _('Simplified Chinese')),
+        )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -121,7 +126,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+USE_I18N = True
 
 AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 
@@ -162,6 +167,12 @@ DATABASES = {
 PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
 PROJECT_APP = os.path.basename(PROJECT_APP_PATH)
 PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
+
+# 修改内容 原不存在
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
 
 # Every cache key will get prefixed with this value - here we set it to
 # the name of the directory the project is in to try and use something
@@ -225,6 +236,7 @@ TEMPLATES = [
 
 INSTALLED_APPS = [
     "solid",
+    # "modeltranslation",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -246,6 +258,8 @@ INSTALLED_APPS = [
     # 'mezzanine.accounts',
 ]
 
+# 添加中间件django.middleware.locale.LocaleMiddleware,放在SessionMiddleware之后  CommonMiddleware之前
+# 中间件 注意中间件的位置是有顺序的
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.
@@ -253,7 +267,7 @@ MIDDLEWARE = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     # Uncomment if using internationalisation or localisation
-    # 'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",

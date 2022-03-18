@@ -20,11 +20,16 @@
         {% endif %}>
             {% if page.title == "Business" %}
               {% translate "Business" as the_title %}
-            {% endif %}
-            {% if page.title == "About" %}
+              {{ the_title }}
+            {% elif page.title == "About" %}
               {% translate "About" as the_title %}
+              {{ the_title }}
+            {% elif page.title == "Contact" %}
+              {% translate "Contact" as the_title %}
+              {{ the_title }}
+            {% else %}
+              {{ page.title }}
             {% endif %}
-            {{the_title}}
             <!-- {{ page.title }} -->
             {% if page.has_children_in_menu %}<b class="caret"></b>{% endif %}
         </a>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-09 23:22+0800\n"
+"POT-Creation-Date: 2022-03-10 03:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,19 +34,23 @@ msgstr "简体中文"
 msgid "Toggle Navigation"
 msgstr ""
 
-#: solid/templates/base.html:206
+#: solid/templates/base.html:84
+msgid "NFT DAPP Development"
+msgstr "NFTs 製造促進；Ethereume DAPP開発"
+
+#: solid/templates/base.html:205
 msgid "Template by"
 msgstr ""
 
-#: solid/templates/base.html:208
+#: solid/templates/base.html:207
 msgid "Mezzanine theme by"
 msgstr ""
 
-#: solid/templates/base.html:210
+#: solid/templates/base.html:209
 msgid "Copyright"
 msgstr ""
 
-#: solid/templates/base.html:212
+#: solid/templates/base.html:211
 msgid "All Rights Reserved."
 msgstr ""
 
@@ -134,7 +138,7 @@ msgid "[read more]"
 msgstr ""
 
 #: solid/templates/blog/includes/filter_panel.html:6
-#: solid/templates/index.html:231
+#: solid/templates/index.html:233
 msgid "Recent Posts"
 msgstr ""
 
@@ -290,8 +294,9 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
-#: solid/templates/index.html:4 solid/templates/pages/menus/breadcrumb.html:4
+#: solid/templates/index.html:5 solid/templates/pages/menus/breadcrumb.html:4
 #: solid/templates/pages/menus/breadcrumb.html:10
+#: solid/templates/pages/menus/dropdown.html:10
 #: solid/templates/pages/menus/dropdown1.html:10
 #: solid/templates/pages/menus/footer_tree.html:11
 #: solid/templates/pages/menus/mobile.html:10
@@ -303,6 +308,18 @@ msgstr ""
 
 #: solid/templates/pages/menus/admin.html:31
 msgid "Add"
+msgstr ""
+
+#: solid/templates/pages/menus/dropdown.html:22
+msgid "Business"
+msgstr "事業紹介"
+
+#: solid/templates/pages/menus/dropdown.html:25
+msgid "About"
+msgstr "企業情報"
+
+#: solid/templates/pages/menus/dropdown.html:28
+msgid "Contact"
 msgstr ""
 
 #: solid/templates/search_results.html:5 solid/templates/search_results.html:6
@@ -332,3 +349,9 @@ msgstr ""
 #: solid/templates/twitter/tweets.html:7
 msgid "Recent Tweets"
 msgstr ""
+
+#~ msgid "Mezzanine"
+#~ msgstr "ROOBOOTO 日本"
+
+#~ msgid "An open source content management platform."
+#~ msgstr "NFTs 製造促進；Ethereume DAPP開発"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 01:59+0800\n"
+"POT-Creation-Date: 2022-03-10 03:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,9 +34,9 @@ msgstr "简体中文"
 msgid "Toggle Navigation"
 msgstr "的范德萨范德萨范德萨范德萨的第三方第三方"
 
-#: solid/templates/base.html:83
-msgid "Mezzanine"
-msgstr ""
+#: solid/templates/base.html:84
+msgid "NFT DAPP Development"
+msgstr "NFT制作推广营运；Ethereume DAPP开发"
 
 #: solid/templates/base.html:205
 msgid "Template by"
@@ -296,6 +296,7 @@ msgstr ""
 
 #: solid/templates/index.html:5 solid/templates/pages/menus/breadcrumb.html:4
 #: solid/templates/pages/menus/breadcrumb.html:10
+#: solid/templates/pages/menus/dropdown.html:10
 #: solid/templates/pages/menus/dropdown1.html:10
 #: solid/templates/pages/menus/footer_tree.html:11
 #: solid/templates/pages/menus/mobile.html:10
@@ -308,6 +309,18 @@ msgstr "首 页"
 #: solid/templates/pages/menus/admin.html:31
 msgid "Add"
 msgstr "添加"
+
+#: solid/templates/pages/menus/dropdown.html:22
+msgid "Business"
+msgstr "业 务"
+
+#: solid/templates/pages/menus/dropdown.html:25
+msgid "About"
+msgstr "关 于"
+
+#: solid/templates/pages/menus/dropdown.html:28
+msgid "Contact"
+msgstr ""
 
 #: solid/templates/search_results.html:5 solid/templates/search_results.html:6
 #: solid/templates/search_results.html:15
@@ -337,5 +350,8 @@ msgstr "更多"
 msgid "Recent Tweets"
 msgstr ""
 
-#~ msgid "Business"
-#~ msgstr "合 作"
+#~ msgid "Mezzanine"
+#~ msgstr "ROOBOOTO"
+
+#~ msgid "An open source content management platform."
+#~ msgstr "NFT制作推广营运；Ethereume DAPP开发"

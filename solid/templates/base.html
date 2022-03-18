@@ -21,7 +21,7 @@
 
 
  <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css" />
-	
+
     <link href="{% static "css/style.css" %}" rel="stylesheet">
 
 
@@ -52,6 +52,17 @@
 <script src="{% static "js/respond.min.js" %}"></script>
 <![endif]-->
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2HMF01SCK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P2HMF01SCK');
+</script>
+
+
 {% block extra_head %}{% endblock %}
 </head>
 
@@ -70,13 +81,34 @@
         <span class="icon-bar"></span>
     </button>
     {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
+    {% translate "NFT DAPP Development" as the_tagline %}
+    {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ the_tagline }}</p>{% endif %}
 </div>
 <div class="navbar-collapse collapse navbar-right">
-    
     {% page_menu "pages/menus/dropdown.html" %}
+
+
 </div>
 </div>
+<!-- start =======Multi-language support 多语言支持 ============-->
+  <li class="dropdown">
+      <form id="change_language_form" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+          <input name="next" type="hidden" value="{{ redirect_to }}" />
+          <select name="language" id="change_language">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+                  <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                      {{ language.name_local }} ({{ language.code }})
+                  </option>
+              {% endfor %}
+          </select>
+{#            <input type="submit" value="{% trans "Go" %}" />#}
+      </form>
+  </li>
+<!--==================end=========================-->
+
 </div>
 {% block title_wrapper%}
 <div id="blue">
@@ -102,9 +134,6 @@
 {% endif %}
 {% endnevercache %}
 
- 
-   
-
 
 
 </div>
@@ -128,13 +157,13 @@
     {% nevercache %}
     {% include "includes/user_panel.html" %}
     {% endnevercache %}
-  
+
     {% block right_panel %}
     {% ifinstalled mezzanine.twitter %}
     {% include "twitter/tweets.html" %}
     {% endifinstalled %}
     {% endblock %}
-    
+
 </div>
 {% endblock %}
 
@@ -146,7 +175,7 @@
 <div class="container">
 	<div class="row">
 	<div class="col-lg-6">
-		 		{% page_menu "pages/menus/footer.html" %}	
+		 		{% page_menu "pages/menus/footer.html" %}
 	</div>
 	<div class="col-lg-3">
 		 			<h4>Social Links</h4>
@@ -163,31 +192,33 @@
 		 			<h4>Our Bunker</h4>
 		 			<div class="hline-w"></div>
 		 			<p>
-		 				Some Ave, 987,<br/>
-		 				23890, New York,<br/>
-		 				United States.<br/>
+            Osaka, Japan<br/>
+		 				<br/>
+		 				London, United Kingdom<br/>
 		 			</p>
 		 		</div>
-		 	
+
 		</div>
 
 <div class="row">
 <p class="site-info text-center">
-    {% trans "Template by" %}
+    <!-- {% trans "Template by" %}
     <a href="http://www.blacktie.co">Blacktie</a>
     {% trans "Mezzanine theme by" %}
-    <a href="http://thecodinghouse.in">CodingHouse</a>
-    
+    <a href="http://thecodinghouse.in">CodingHouse</a> -->
+    {% trans "Copyright" %}
+    ©️ 2021-2022 <a href="https://www.roobooto.com">ROOBOOTO</a> Inc.
+    {% trans "All Rights Reserved." %}
 </p>
 </div>
 </div>
 </div>
 <!-- Core JavaScript Files -->
-  
-    
+
+
      <!-- Placed at the end of the document so the pages load faster -->
-   
-   
+
+
 	<script src="{% static "js/retina-1.1.0.js" %}"></script>
 	<script src="{% static "js/jquery.hoverdir.js" %}"></script>
 	<script src="{% static "js/jquery.hoverex.min.js" %}"></script>
@@ -201,11 +232,11 @@
 	var $container = $('.portfolio'),
 		$items = $container.find('.portfolio-item'),
 		portfolioLayout = 'fitRows';
-		
+
 		if( $container.hasClass('portfolio-centered') ) {
 			portfolioLayout = 'masonry';
 		}
-				
+
 		$container.isotope({
 			filter: '*',
 			animationEngine: 'best-available',
@@ -218,12 +249,12 @@
 		masonry: {
 		}
 		}, refreshWaypoints());
-		
+
 		function refreshWaypoints() {
 			setTimeout(function() {
-			}, 1000);   
+			}, 1000);
 		}
-				
+
 		$('nav.portfolio-filter ul a').on('click', function() {
 				var selector = $(this).attr('data-filter');
 				$container.isotope({ filter: selector }, refreshWaypoints());
@@ -231,11 +262,11 @@
 				$(this).addClass('active');
 				return false;
 		});
-		
-		function getColumnNumber() { 
-			var winWidth = $(window).width(), 
+
+		function getColumnNumber() {
+			var winWidth = $(window).width(),
 			columnNumber = 1;
-		
+
 			if (winWidth > 1200) {
 				columnNumber = 5;
 			} else if (winWidth > 950) {
@@ -248,34 +279,47 @@
 				columnNumber = 1;
 			}
 				return columnNumber;
-			}       
-			
+			}
+
 			function setColumns() {
-				var winWidth = $(window).width(), 
-				columnNumber = getColumnNumber(), 
+				var winWidth = $(window).width(),
+				columnNumber = getColumnNumber(),
 				itemWidth = Math.floor(winWidth / columnNumber);
-				
-				$container.find('.portfolio-item').each(function() { 
-					$(this).css( { 
-					width : itemWidth + 'px' 
+
+				$container.find('.portfolio-item').each(function() {
+					$(this).css( {
+					width : itemWidth + 'px'
 				});
 			});
 		}
-		
-		function setPortfolio() { 
+
+		function setPortfolio() {
 			setColumns();
 			$container.isotope('reLayout');
 		}
-			
-		$container.imagesLoaded(function () { 
+
+		$container.imagesLoaded(function () {
 			setPortfolio();
 		});
-		
-		$(window).on('resize', function () { 
-		setPortfolio();          
+
+		$(window).on('resize', function () {
+		setPortfolio();
 	});
 })(jQuery);
 </script>
+
+{% comment %}
+<!--=======Multi-language support 多语言支持 ============-->
+<script>
+    jQuery(document).ready(function ($) {
+        $('#change_language').change(function (e) {
+            e.preventDefault();
+            $('#change_language_form').submit();
+            return false;
+        })
+    })
+</script>
+{% endcomment %}
 
 </body>
 </html>

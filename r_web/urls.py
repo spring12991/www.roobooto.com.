@@ -84,6 +84,7 @@ urlpatterns += [
     # Note that for any of the various homepage patterns above, you'll
     # need to use the ``SITE_PREFIX`` setting as well.
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+    path(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
